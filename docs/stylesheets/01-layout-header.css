@@ -1,0 +1,398 @@
+/* -------------------------------------------------------------------------- */
+/* Layout                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.md-grid {
+  max-width: 80rem;
+}
+
+.md-main__inner {
+  margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 60em) {
+  .md-sidebar--secondary {
+    width: 15rem;
+  }
+}
+
+.md-content__inner {
+  margin: 0 0.8rem 1.5rem;
+  padding-top: 1.25rem;
+}
+
+@media screen and (min-width: 76.25em) {
+  /* Full-bleed main grid: left nav hugs the viewport, TOC hugs the right.
+     Header stays independently full-bleed via .md-header__inner. */
+  .md-main__inner.md-grid {
+    max-width: none;
+  }
+
+  .md-sidebar--primary {
+    width: 15rem;
+    align-self: flex-start;
+  }
+
+  .md-sidebar--secondary {
+    width: 15rem;
+    align-self: flex-start;
+    margin-inline-start: auto;
+  }
+
+  /* Pin the scroll surfaces to the viewport edges with a ~1rem inset. */
+  .md-sidebar--primary > .md-sidebar__scrollwrap {
+    position: sticky;
+    left: 1rem;
+    margin-left: 1rem;
+    margin-right: 0.2rem;
+  }
+
+  .md-sidebar--secondary > .md-sidebar__scrollwrap {
+    position: sticky;
+    right: 1rem;
+    margin-left: 0.2rem;
+    margin-right: 1rem;
+  }
+
+  /* Beat Material's [dir=ltr] .md-sidebar--* ~ .md-content > .md-content__inner
+     (1.2rem). Keep the article readable and centered between the two rails. */
+  .md-content__inner,
+  [dir] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner,
+  [dir] .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 48rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header — shadcn docs chrome                                                 */
+/* -------------------------------------------------------------------------- */
+
+.md-header {
+  background-color: var(--background);
+  color: var(--foreground);
+  box-shadow: none;
+  border-bottom: 1px solid var(--border);
+  height: 3.5rem;
+}
+
+.md-header--shadow,
+.md-header[data-md-state="shadow"] {
+  box-shadow: none;
+}
+
+.md-header__inner,
+.md-header__inner.md-grid {
+  display: flex;
+  align-items: stretch;
+  height: 3.5rem;
+  padding: 0 1.5rem;
+  max-width: none;
+}
+
+.md-header__end {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 0.35rem;
+}
+
+.md-header__rule {
+  width: 1px;
+  height: 1rem;
+  margin: 0 0.15rem;
+  background: var(--border);
+}
+
+.md-header__button {
+  color: var(--foreground);
+  margin: 0;
+  padding: 0.4rem;
+  align-self: center;
+  border-radius: calc(var(--radius) - 4px);
+  opacity: 1;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.md-header__button:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  opacity: 1;
+}
+
+.md-header__button.md-logo {
+  padding: 0.2rem;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.md-header__title {
+  flex: 0 0 auto;
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  margin-left: 0.15rem;
+  pointer-events: none;
+}
+
+.md-header__title > .md-header__ellipsis {
+  width: max-content;
+}
+
+.md-header__topic + .md-header__topic {
+  display: none;
+}
+
+.md-header__title .md-header__topic {
+  position: static;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+.md-header .md-source {
+  display: inline-flex;
+  align-items: center;
+  color: var(--foreground);
+  padding: 0.35rem 0.5rem;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.md-header .md-source:hover {
+  background: var(--accent);
+  color: var(--foreground);
+  opacity: 1;
+}
+
+.md-source__repository,
+.md-source__facts {
+  display: none;
+}
+
+.md-source__icon {
+  margin: 0;
+}
+
+.md-source__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.md-header__option {
+  margin: 0;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-header__menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 59.9em) {
+  .md-header__title {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header tabs — Home / Layouts / Reference in the 56px header row             */
+/* Flex: [logo+title] ... spacer ... [tabs] [search] [palette]                 */
+/* Items fill the header so the 2px orange underline sits on the baseline.     */
+/* Content-area pymdownx tabs stay in .md-typeset .tabbed-set below.           */
+/* -------------------------------------------------------------------------- */
+
+.md-header .md-tabs,
+.md-header .md-tabs[hidden] {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  background: transparent;
+  color: inherit;
+  width: auto;
+  height: 3.5rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+  margin-right: 0.5rem;
+  min-width: 0;
+  overflow: visible;
+  z-index: auto;
+  pointer-events: auto;
+  line-height: 1.3;
+}
+
+.md-header .md-tabs .md-grid {
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  max-width: none;
+  margin: 0;
+  height: 100%;
+}
+
+.md-header .md-tabs__list,
+.md-header .md-tabs .md-tabs__list,
+[dir] .md-header .md-tabs__list,
+[dir="ltr"] .md-header .md-tabs__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+  align-items: stretch;
+  height: 100%;
+  contain: none;
+  overflow: visible;
+  box-shadow: none;
+  border-bottom: 0;
+}
+
+/* Hide Material's JS sliding indicator — it sits at the wrong height. */
+.md-header .md-tabs__list::before,
+.md-header .md-tabs__list::after,
+.md-header .md-tabs .md-tabs__list::before,
+.md-header .md-tabs .md-tabs__list::after,
+.js .md-header .md-tabs__list::before,
+.js .md-header .md-tabs .md-tabs__list::before {
+  display: none;
+  content: none;
+  background: none;
+  transform: none;
+}
+
+.md-header .md-tabs__item,
+.md-header .md-tabs .md-tabs__item,
+.md-tabs .md-tabs__item {
+  position: relative;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  border-bottom: 0;
+}
+
+.md-tabs .md-tabs__link,
+.md-header .md-tabs .md-tabs__link,
+.md-header .md-tabs[hidden] .md-tabs__link,
+.md-header .md-tabs a.md-tabs__link,
+.md-typeset .md-tabs a.md-tabs__link {
+  margin: 0;
+  height: 100%;
+  padding: 0 0.9em;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  opacity: 1;
+  transform: none;
+  background: transparent;
+  background-color: transparent;
+  border-radius: 0;
+  text-decoration: none;
+  text-underline-offset: unset;
+  box-shadow: none;
+  outline-color: var(--md-accent-fg-color);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Beat .md-typeset a { text-decoration: underline } if it leaks. */
+.md-header .md-tabs a,
+.md-header .md-tabs a:hover,
+.md-header .md-tabs a:focus,
+.md-header .md-tabs a:active,
+.md-header .md-tabs a.md-tabs__link,
+.md-header .md-tabs a.md-tabs__link:hover,
+.md-header .md-tabs a.md-tabs__link:focus,
+.md-header .md-tabs a.md-tabs__link:active,
+.md-typeset .md-header .md-tabs a,
+.md-typeset .md-tabs a.md-tabs__link,
+.md-typeset .md-tabs a.md-tabs__link:hover {
+  text-decoration: none;
+  text-underline-offset: unset;
+}
+
+/* Hover: muted/gray. No orange, no Material indigo. */
+.md-tabs .md-tabs__link:hover,
+.md-tabs .md-tabs__link:focus,
+.md-tabs a.md-tabs__link:hover,
+.md-tabs a.md-tabs__link:focus,
+.md-header .md-tabs .md-tabs__link:hover,
+.md-header .md-tabs .md-tabs__link:focus,
+.md-header .md-tabs a.md-tabs__link:hover,
+.md-header .md-tabs a.md-tabs__link:focus {
+  color: var(--muted-foreground);
+  background-color: var(--accent);
+  opacity: 1;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+/* Selected: --foreground text (black in light). */
+.md-tabs .md-tabs__item--active .md-tabs__link,
+.md-tabs .md-tabs__link--active,
+.md-tabs a.md-tabs__link--active,
+.md-header .md-tabs .md-tabs__item--active .md-tabs__link,
+.md-header .md-tabs .md-tabs__link--active,
+.md-header .md-tabs a.md-tabs__link--active {
+  color: var(--foreground);
+  font-weight: 600;
+  background: transparent;
+  background-color: transparent;
+  opacity: 1;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.md-tabs .md-tabs__item--active .md-tabs__link:hover,
+.md-tabs .md-tabs__item--active .md-tabs__link:focus,
+.md-tabs .md-tabs__link--active:hover,
+.md-tabs .md-tabs__link--active:focus,
+.md-header .md-tabs .md-tabs__item--active .md-tabs__link:hover,
+.md-header .md-tabs .md-tabs__item--active .md-tabs__link:focus,
+.md-header .md-tabs .md-tabs__link--active:hover,
+.md-header .md-tabs .md-tabs__link--active:focus {
+  color: var(--foreground);
+  background-color: var(--accent);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+/* 2px orange #ea7100 at the header baseline, flush with the 1px border. */
+.md-header .md-tabs__item--active::after,
+.md-header .md-tabs li.md-tabs__item--active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #ea7100;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Kill Material's second indigo strip if it ever renders outside the header */
+.md-container > .md-tabs,
+.md-main > .md-tabs {
+  display: none;
+}
+
+/* Mobile uses the drawer — hide header tabs below Material's tab breakpoint. */
+@media screen and (max-width: 76.234375em) {
+  .md-header .md-tabs,
+  .md-header .md-tabs[hidden] {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+    display: none;
+    box-shadow: none;
+    background: transparent;
+  }
+}
