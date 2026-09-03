@@ -1,0 +1,79 @@
+site_name: Material Shadcn
+site_description: A Material for MkDocs overlay that reads like shadcn/ui, with no extra packages.
+site_url: http://127.0.0.1:43147/
+copyright: Built with Material for MkDocs. Geist is licensed under the SIL Open Font License.
+
+theme:
+  name: material
+  custom_dir: overrides
+  font: false
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.footer
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      title: On This Page
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets
+  - pymdownx.keys
+
+nav:
+  - Home:
+      - Overview: index.md
+      - Getting started: getting-started.md
+  - Layouts:
+      - Blocks: layouts/blocks.md
+      - Buttons: layouts/buttons.md
+  - Reference:
+      - Typography: reference/typography.md
+      - Admonitions: reference/admonitions.md
+      - Code: reference/code.md
+      - Tabs: reference/tabs.md
+      - Tables: reference/tables.md
+
+extra:
+  generator: false
+
+plugins:
+  - search
