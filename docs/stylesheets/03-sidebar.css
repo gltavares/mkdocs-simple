@@ -1,0 +1,222 @@
+/* -------------------------------------------------------------------------- */
+/* Sidebar + TOC                                                               */
+/* -------------------------------------------------------------------------- */
+
+.md-sidebar {
+  background: transparent;
+}
+
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  padding-top: 0.75rem;
+}
+
+.md-nav--primary > .md-nav__title {
+  display: none;
+}
+
+.md-nav__title {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  box-shadow: none;
+}
+
+.md-nav--secondary .md-nav__title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding-left: 0;
+  color: var(--muted-foreground);
+}
+
+.md-nav--secondary .md-nav__title .md-nav__icon {
+  display: none;
+}
+
+.md-nav__item {
+  padding: 0;
+}
+
+.md-nav__link {
+  margin: 1px 0;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.375rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* Beat Material's .md-nav__link[href]:hover { color: var(--md-accent-fg-color) }
+   (indigo/blue when the palette token leaks through). Gray box uses --accent. */
+.md-sidebar--primary .md-nav__link:hover,
+.md-sidebar--primary .md-nav__link:focus,
+.md-sidebar--primary .md-nav__link[href]:hover,
+.md-sidebar--primary .md-nav__link[href]:focus,
+.md-sidebar--primary .md-nav__link[for]:hover,
+.md-sidebar--primary .md-nav__link[for]:focus {
+  color: var(--foreground);
+  background-color: var(--accent);
+  outline-color: transparent;
+  box-shadow: none;
+}
+
+.md-sidebar--primary .md-nav__link.focus-visible {
+  outline-color: var(--ring);
+}
+
+/* Active page: highlight orange. Cover Material's several active selectors. */
+.md-sidebar--primary .md-nav__link--active,
+.md-sidebar--primary .md-nav__item .md-nav__link--active,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav__link,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > a.md-nav__link {
+  color: #ea7100;
+  font-weight: 500;
+  background-color: transparent;
+  outline-color: transparent;
+  box-shadow: none;
+}
+
+.md-sidebar--primary .md-nav__link--active:hover,
+.md-sidebar--primary .md-nav__link--active:focus,
+.md-sidebar--primary .md-nav__item .md-nav__link--active:hover,
+.md-sidebar--primary .md-nav__item .md-nav__link--active:focus,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link:hover,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link:focus,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav__link:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav__link:focus,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav__link[href]:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav__link[href]:focus,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > a.md-nav__link:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--active > a.md-nav__link:focus {
+  color: #ea7100;
+  background-color: var(--accent);
+  outline-color: transparent;
+  box-shadow: none;
+}
+
+.md-nav__item--section > .md-nav__link,
+.md-nav__item--section > .md-nav__link[for],
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link[for],
+.md-sidebar--primary .md-nav--primary .md-nav__item--section.md-nav__item--active > .md-nav__link,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section.md-nav__item--active > .md-nav__link[for] {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 1.1rem 0.5rem 0.35rem;
+  background: transparent;
+}
+
+.md-nav__item--section > .md-nav__link:hover,
+.md-nav__item--section > .md-nav__link:focus,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link:focus,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link[for]:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link[for]:focus,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section.md-nav__item--active > .md-nav__link:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section.md-nav__item--active > .md-nav__link:focus {
+  background: transparent;
+  color: var(--muted-foreground);
+}
+
+/* A section label that is itself the current page stays orange. */
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link.md-nav__link--active,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section.md-nav__item--active > .md-nav__link.md-nav__link--active,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link.md-nav__link--active:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav__link.md-nav__link--active:focus,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section.md-nav__item--active > .md-nav__link.md-nav__link--active:hover,
+.md-sidebar--primary .md-nav--primary .md-nav__item--section.md-nav__item--active > .md-nav__link.md-nav__link--active:focus {
+  color: #ea7100;
+}
+
+.md-nav--secondary .md-nav__link {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted-foreground);
+  border-left: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 0.25rem 0;
+  text-decoration: none;
+}
+
+/* Hover: darker text, not accent orange / Material blue. */
+.md-nav--secondary .md-nav__link:hover,
+.md-nav--secondary .md-nav__link:focus,
+.md-nav--secondary .md-nav__link[href]:hover,
+.md-nav--secondary .md-nav__link[href]:focus,
+.md-nav--secondary .md-nav__link--passed:hover,
+.md-nav--secondary .md-nav__link--passed:focus,
+.md-nav--secondary a.md-nav__link:hover,
+.md-nav--secondary a.md-nav__link:focus {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.md-nav--secondary .md-nav__link.focus-visible {
+  outline-color: var(--ring);
+}
+
+.md-nav--secondary .md-nav__link--passed {
+  color: var(--muted-foreground);
+  border-left-color: transparent;
+  font-weight: 400;
+}
+
+/* Active TOC item: bold + foreground (black / near-white), not #ea7100. */
+.md-nav--secondary .md-nav__item .md-nav__link--active,
+.md-nav--secondary .md-nav__item .md-nav__link--active code,
+.md-nav--secondary a.md-nav__link--active,
+.md-nav--secondary a.md-nav__link.md-nav__link--passed.md-nav__link--active,
+.md-nav--secondary a.md-nav__link.md-nav__link--passed.md-nav__link--active code,
+nav.md-nav.md-nav--secondary a.md-nav__link.md-nav__link--passed.md-nav__link--active {
+  color: var(--foreground);
+  background: transparent;
+  border-left-color: transparent;
+  font-weight: 650;
+}
+
+.md-nav--secondary .md-nav__item .md-nav__link--active:hover,
+.md-nav--secondary .md-nav__item .md-nav__link--active:focus,
+.md-nav--secondary a.md-nav__link--active:hover,
+.md-nav--secondary a.md-nav__link--active:focus,
+.md-nav--secondary a.md-nav__link.md-nav__link--passed.md-nav__link--active:hover,
+.md-nav--secondary a.md-nav__link.md-nav__link--passed.md-nav__link--active:focus,
+nav.md-nav.md-nav--secondary a.md-nav__link.md-nav__link--passed.md-nav__link--active:hover,
+nav.md-nav.md-nav--secondary a.md-nav__link.md-nav__link--passed.md-nav__link--active:focus {
+  color: var(--foreground);
+  background: transparent;
+}
+
+.md-nav--secondary .md-nav__item .md-nav__item .md-nav__link {
+  padding-left: 1rem;
+}
+
+.md-nav__icon {
+  color: var(--muted-foreground);
+}
+
+.md-nav--primary .md-nav__title .md-logo {
+  display: none;
+}
+
+/* Drawer (mobile) keeps a visible title */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary > .md-nav__title {
+    display: flex;
+    align-items: center;
+    background: var(--background);
+    color: var(--foreground);
+    box-shadow: none;
+    border-bottom: 1px solid var(--border);
+    height: 3.5rem;
+    font-weight: 500;
+  }
+
+  .md-nav--primary .md-nav__title .md-logo {
+    display: block;
+  }
+}
