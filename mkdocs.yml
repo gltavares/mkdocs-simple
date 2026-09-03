@@ -37,6 +37,15 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/00-tokens.css
+  - stylesheets/01-layout-header.css
+  - stylesheets/02-search.css
+  - stylesheets/03-sidebar.css
+  - stylesheets/04-typeset-code.css
+  - stylesheets/05-admonitions.css
+  - stylesheets/06-tabs.css
+  - stylesheets/07-tables-footer.css
+  - stylesheets/08-misc-blocks.css
 
 markdown_extensions:
   - admonition
