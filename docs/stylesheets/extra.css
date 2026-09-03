@@ -17,3 +17,16 @@
   font-display: swap;
   src: url("../assets/fonts/GeistMono-Variable.woff2") format("woff2-variations");
 }
+
+/* -------------------------------------------------------------------------- */
+/* Tokens                                                                      */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --md-text-font: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --md-code-font: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco,
+    Consolas, "Liberation Mono", monospace;
+  --radius: 0.625rem;
+  --card-pad-y: 1rem;
+  --card-pad-x: 1rem;
+}
