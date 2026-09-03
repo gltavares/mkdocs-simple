@@ -1,0 +1,205 @@
+/* -------------------------------------------------------------------------- */
+/* Typeset                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.md-typeset {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+
+.md-typeset h1 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--foreground);
+  margin: 0 0 0.4em;
+}
+
+.md-typeset h1 + p {
+  margin-top: 0;
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 28rem;
+}
+
+.md-typeset h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  border: 0;
+  margin-top: 3rem;
+  padding-top: 0.2em;
+  scroll-margin-top: 5rem;
+}
+
+.md-typeset h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin-top: 2rem;
+  scroll-margin-top: 5rem;
+}
+
+.md-typeset h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.md-typeset p,
+.md-typeset li {
+  color: var(--foreground);
+}
+
+.md-typeset a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  font-weight: 500;
+}
+
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+  opacity: 1;
+}
+
+.md-typeset mark {
+  background-color: var(--md-typeset-mark-color);
+  color: inherit;
+  box-shadow: none;
+}
+
+.md-typeset .headerlink {
+  text-decoration: none;
+  opacity: 0;
+  color: var(--muted-foreground);
+}
+
+.md-typeset h1:hover .headerlink,
+.md-typeset h2:hover .headerlink,
+.md-typeset h3:hover .headerlink,
+.md-typeset h4:hover .headerlink {
+  opacity: 1;
+}
+
+.md-typeset strong {
+  font-weight: 600;
+}
+
+.md-typeset blockquote {
+  border-left: 2px solid var(--border);
+  color: var(--muted-foreground);
+  padding-left: 1.1em;
+  margin-left: 0;
+  font-style: italic;
+  background: transparent;
+}
+
+.md-typeset hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+.md-typeset ul,
+.md-typeset ol {
+  margin: 0.8em 0 1.1em 0.2em;
+}
+
+.md-typeset li {
+  margin-bottom: 0.35em;
+}
+
+.md-typeset kbd {
+  background: var(--muted);
+  border: 0;
+  border-radius: 9999px;
+  box-shadow: none;
+  color: var(--muted-foreground);
+  font-family: var(--md-text-font);
+  font-size: 0.75rem;
+  font-weight: 500;
+  height: 1.25rem;
+  min-width: 1.25rem;
+  padding: 0 0.3rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Code                                                                        */
+/* -------------------------------------------------------------------------- */
+
+.md-typeset code {
+  background-color: var(--muted);
+  border-radius: 0.375rem;
+  color: var(--foreground);
+  font-size: 0.84em;
+  padding: 0.15em 0.35em;
+  box-shadow: none;
+  word-break: break-word;
+}
+
+.md-typeset a code {
+  color: var(--primary);
+}
+
+.md-typeset pre {
+  margin: 1.1em 0 1.4em;
+}
+
+.md-typeset pre > code {
+  background-color: var(--code);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--code-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  padding: 1rem 1.1rem;
+  box-shadow: none;
+}
+
+.md-typeset .highlight {
+  margin: 1.1em 0 1.4em;
+}
+
+.md-typeset .highlight pre {
+  margin: 0;
+}
+
+.md-typeset .highlight pre > code {
+  border-radius: 0.75rem;
+}
+
+.md-typeset .highlighttable {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--code);
+}
+
+.md-clipboard {
+  color: var(--muted-foreground);
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.md-clipboard:hover {
+  color: var(--foreground);
+}
+
+.md-typeset .highlight span.filename {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  border-radius: 0.75rem 0.75rem 0 0;
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+
+.md-typeset .highlight span.filename + pre > code,
+.md-typeset .highlight span.filename + pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
