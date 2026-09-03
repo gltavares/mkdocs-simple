@@ -1,0 +1,128 @@
+/* -------------------------------------------------------------------------- */
+/* Tabs — pymdownx.tabbed / .tabbed-set (not header .md-tabs)                  */
+/* -------------------------------------------------------------------------- */
+
+.md-typeset .tabbed-set {
+  margin: 1.4em 0;
+}
+
+.md-typeset .tabbed-labels {
+  box-shadow: none;
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+
+/* Material's JS slider uses `.js .md-typeset .tabbed-labels:before` with
+   `--md-default-fg-color` (black). Beat that specificity and drop it. */
+.js .md-typeset .tabbed-labels::before,
+.js .md-typeset .tabbed-labels::after,
+.md-typeset .tabbed-labels::before,
+.md-typeset .tabbed-labels::after {
+  display: none;
+  background: none;
+  background-color: transparent;
+  content: none;
+}
+
+.md-typeset .tabbed-labels > label,
+.md-typeset .tabbed-alternate .tabbed-labels > label,
+.md-typeset .tabbed-set.tabbed-alternate > .tabbed-labels > label {
+  color: var(--muted-foreground);
+  font-size: 0.875em;
+  font-weight: 600;
+  padding: 0.55em 0.9em 0.65em;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  background-color: transparent;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.md-typeset .tabbed-labels > label:hover,
+.md-typeset .tabbed-alternate .tabbed-labels > label:hover {
+  color: var(--md-accent-fg-color);
+  background: transparent;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* content.tabs.link wraps the label text in <a>. Material zeros label
+   padding and puts it on the anchor. */
+.md-typeset .tabbed-labels--linked > label,
+.md-typeset .tabbed-alternate .tabbed-labels--linked > label,
+.md-typeset .tabbed-set.tabbed-alternate > .tabbed-labels.tabbed-labels--linked > label {
+  padding: 0;
+}
+
+/* Beat `.md-typeset a { text-decoration: underline }` leaking onto tabs. */
+.md-typeset .tabbed-labels a,
+.md-typeset .tabbed-labels--linked > label > a,
+.md-typeset .tabbed-labels--linked > label > a:hover,
+.md-typeset .tabbed-labels--linked > label > a:focus,
+.md-typeset .tabbed-labels--linked > label > a:active,
+.md-typeset .tabbed-alternate .tabbed-labels--linked > label > a,
+.md-typeset .tabbed-alternate .tabbed-labels--linked > label > a:hover,
+.md-typeset .tabbed-set.tabbed-alternate > .tabbed-labels.tabbed-labels--linked > label > a,
+.md-typeset .tabbed-set.tabbed-alternate > .tabbed-labels.tabbed-labels--linked > label > a:hover {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: unset;
+  background: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.md-typeset .tabbed-labels--linked > label > a {
+  display: block;
+  padding: 0.55em 0.9em 0.65em;
+}
+
+/* Selected: 2px orange bottom border, no Material blue fill. */
+.md-typeset .tabbed-labels > label[aria-selected="true"],
+.md-typeset .tabbed-alternate .tabbed-labels > label[aria-selected="true"],
+.md-typeset .tabbed-set.tabbed-alternate > .tabbed-labels > label[aria-selected="true"],
+.md-typeset .tabbed-set.tabbed-alternate > .tabbed-labels.tabbed-labels--linked > label[aria-selected="true"],
+.md-typeset .tabbed-labels > label > input:checked + span,
+.md-typeset .tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
+.md-typeset .tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
+.md-typeset .tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3),
+.md-typeset .tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),
+.md-typeset .tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
+.md-typeset .tabbed-set > input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6) {
+  color: var(--foreground);
+  border-bottom-color: var(--md-accent-fg-color); /* #ea7100 */
+  background: transparent;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.md-typeset .tabbed-labels > label[aria-selected="true"] > a,
+.md-typeset .tabbed-alternate .tabbed-labels > label[aria-selected="true"] > a,
+.md-typeset .tabbed-labels--linked > label[aria-selected="true"] > a {
+  color: inherit;
+  text-decoration: none;
+  background: transparent;
+  background-color: transparent;
+}
+
+.md-typeset .tabbed-content {
+  padding-top: 0.9em;
+}
+
+.md-typeset .tabbed-block > .highlight:first-child,
+.md-typeset .tabbed-block > pre:first-child {
+  margin-top: 0;
+}
+
+.md-typeset .tabbed-labels > label + label {
+  margin-left: 0;
+}
+
+.md-typeset .tabbed-set .tabbed-labels > label {
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.md-typeset .tabbed-alternate .tabbed-labels {
+  background: transparent;
+  border-radius: 0;
+}
