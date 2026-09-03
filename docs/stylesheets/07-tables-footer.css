@@ -1,0 +1,262 @@
+/* -------------------------------------------------------------------------- */
+/* Tables                                                                      */
+/* -------------------------------------------------------------------------- */
+
+/* Material wraps markdown tables in
+   .md-typeset__scrollwrap > .md-typeset__table (inline-block /
+   shrink-to-fit). Stretch wrappers and the table to the article column.
+   Zero Material's ±0.8rem scroll gutter so width: 100% is the article,
+   not the article minus 1.6rem. table.zh-layout keeps its own rules. */
+.md-typeset .md-typeset__table,
+.md-typeset .md-typeset__scrollwrap,
+.md-typeset table:not([class]) {
+  width: 100%;
+}
+
+.md-typeset .md-typeset__scrollwrap {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.md-typeset .md-typeset__table {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.md-typeset table:not([class]) {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: table;
+  font-size: 0.875rem;
+  overflow: hidden;
+  table-layout: auto;
+}
+
+.md-typeset table:not([class]) th {
+  background: transparent;
+  color: var(--foreground);
+  font-weight: 500;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  min-width: 5rem;
+  height: 2.5rem;
+  white-space: nowrap;
+}
+
+.md-typeset table:not([class]) td {
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.md-typeset table:not([class]) tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+.md-typeset table:not([class]) th:not([align]),
+.md-typeset table:not([class]) td:not([align]) {
+  padding: 0.5rem 0.5rem;
+}
+
+.md-typeset table.zh-layout {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin: 1.5em 0;
+}
+
+.md-typeset table.zh-layout th,
+.md-typeset table.zh-layout td {
+  background: transparent;
+  border: 0;
+  vertical-align: top;
+  padding: 0.35rem 1.25rem 0.85rem 0;
+}
+
+.md-typeset table.zh-layout tr:hover td,
+.md-typeset table.zh-layout tr:hover th {
+  background: transparent;
+}
+
+.md-typeset table.zh-layout td:last-child,
+.md-typeset table.zh-layout th:last-child {
+  padding-right: 0;
+}
+
+.md-typeset table.zh-layout h3 {
+  margin: 0 0 0.35em;
+  font-size: 1.05em;
+}
+
+.md-typeset table.zh-layout p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.95em;
+}
+
+.md-typeset table.zh-props code {
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Footer / prev-next                                                          */
+/* -------------------------------------------------------------------------- */
+
+.md-footer {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.md-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem 1.75rem;
+  max-width: 80rem;
+}
+
+/* Footer lives outside .md-main__inner, so .md-grid would otherwise
+   span both sidebars. Pin prev/next to the article column instead.
+   Tablet: primary is a drawer; only the 15rem TOC rail is in flow.
+   Desktop: article is centered between two 15rem rails (and therefore
+   in the viewport), capped at 48rem. */
+@media screen and (min-width: 60em) and (max-width: 76.1875em) {
+  .md-footer__inner.md-grid {
+    max-width: calc(100% - 15rem - 0.8rem - 0.8rem);
+    margin-left: 0.8rem;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-footer__inner.md-grid {
+    max-width: min(48rem, calc(100% - 15rem - 15rem));
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.md-footer__link,
+.md-footer__link.md-footer__link--prev,
+.md-footer__link.md-footer__link--next {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  border: 0;
+  border-radius: 9999px;
+  box-shadow: none;
+  padding: 0 0.75rem;
+  height: 2rem;
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  background-color: var(--secondary);
+  font-weight: 500;
+  margin-top: 0.25rem;
+  width: auto;
+  max-width: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.md-footer__link--next {
+  margin-left: auto;
+}
+
+.md-footer__link:hover,
+.md-footer__link:focus,
+.md-footer__link.md-footer__link--prev:hover,
+.md-footer__link.md-footer__link--prev:focus,
+.md-footer__link.md-footer__link--next:hover,
+.md-footer__link.md-footer__link--next:focus {
+  background: color-mix(in oklch, var(--secondary) 80%, var(--foreground));
+  background-color: color-mix(in oklch, var(--secondary) 80%, var(--foreground));
+  color: var(--secondary-foreground);
+  opacity: 1;
+  text-decoration: none;
+}
+
+.md-footer__title,
+.md-footer__link .md-footer__title {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 0.15rem;
+  max-width: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: inherit;
+}
+
+.md-footer__direction {
+  display: none;
+}
+
+.md-footer__button,
+.md-footer__link .md-footer__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+
+.md-footer__link .md-footer__button svg {
+  fill: currentColor;
+}
+
+.md-footer-meta {
+  background: var(--background);
+  border-top: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+
+.md-footer-meta .md-copyright {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+.md-footer-meta .md-copyright a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* Center the copyright/meta strip. Leave .md-footer__inner (prev/next)
+   article-column alignment above this bar alone. */
+.md-footer-meta__inner,
+.md-footer-meta__inner.md-grid {
+  justify-content: center;
+  text-align: center;
+}
+
+.md-copyright {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.md-top {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  box-shadow: var(--md-shadow-z1);
+  color: var(--foreground);
+}
+
+.md-top:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
